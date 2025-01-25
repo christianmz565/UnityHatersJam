@@ -1,6 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4fhsh1iuoljh"]
+[gd_scene load_steps=5 format=3 uid="uid://b4fhsh1iuoljh"]
 
 [ext_resource type="Script" path="res://Scenes/Spawnables/flies.gd" id="1_sc3gq"]
+[ext_resource type="Texture2D" uid="uid://du0iy5muuwtcn" path="res://Resources/cricro_atlas.png" id="2_kkhi4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itu5y"]
+atlas = ExtResource("2_kkhi4")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yrvey"]
+radius = 8.0
 
 [node name="Flies" type="Node2D"]
+scale = Vector2(3, 3)
 script = ExtResource("1_sc3gq")
+speed = 80.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_itu5y")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_yrvey")
