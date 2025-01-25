@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dafh5lcpxil72"]
+
+[ext_resource type="Texture2D" uid="uid://ilekirgg0e1h" path="res://Assets/burbuja.png" id="1_irp5u"]
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_irp5u")
