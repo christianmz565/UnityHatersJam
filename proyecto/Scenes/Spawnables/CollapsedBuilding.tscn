@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://p1cqo3xwr0u0"]
+
+[ext_resource type="Script" path="res://Scenes/Spawnables/collapsed_building.gd" id="1_65b4r"]
+
+[node name="CollapsedBuilding" type="Node2D"]
+script = ExtResource("1_65b4r")

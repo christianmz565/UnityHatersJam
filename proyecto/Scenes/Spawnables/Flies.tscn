@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4fhsh1iuoljh"]
+
+[ext_resource type="Script" path="res://Scenes/Spawnables/flies.gd" id="1_sc3gq"]
+
+[node name="Flies" type="Node2D"]
+script = ExtResource("1_sc3gq")

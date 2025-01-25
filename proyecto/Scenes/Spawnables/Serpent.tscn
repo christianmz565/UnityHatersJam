@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuexp1jksyykc"]
+
+[ext_resource type="Script" path="res://Scenes/Spawnables/serpent.gd" id="1_3os22"]
+
+[node name="Serpent" type="Node2D"]
+script = ExtResource("1_3os22")

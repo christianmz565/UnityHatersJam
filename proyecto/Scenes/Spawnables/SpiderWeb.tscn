@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlvtfjpb0olkp"]
+
+[ext_resource type="Script" path="res://Scenes/Spawnables/spider_web.gd" id="1_ivqn8"]
+
+[node name="SpiderWeb" type="Node2D"]
+script = ExtResource("1_ivqn8")
