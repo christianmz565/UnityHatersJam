@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlvtfjpb0olkp"]
+
+[ext_resource type="Script" path="res://Scenes/Spawnables/spider_web.gd" id="1_ivqn8"]
+[ext_resource type="Texture2D" uid="uid://du0iy5muuwtcn" path="res://Resources/cricro_atlas.png" id="2_mg48m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7f8c6"]
+atlas = ExtResource("2_mg48m")
+region = Rect2(16, 0, 32, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b116m"]
+radius = 30.0167
+
+[node name="SpiderWeb" type="Node2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_ivqn8")
+speed = 20.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.625, 2.625)
+texture = SubResource("AtlasTexture_7f8c6")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_b116m")
