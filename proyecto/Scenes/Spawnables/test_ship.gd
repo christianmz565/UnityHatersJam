@@ -4,6 +4,8 @@ class_name TestShip
 static var Instance: TestShip;
 @export var speed: float;
 
+# prototype ship, since we will only have one ship in the game, we can use a singleton
+
 func _ready() -> void:
 	Instance = self;
 

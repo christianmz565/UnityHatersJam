@@ -6,6 +6,7 @@ class_name Spawnable
 static func _spawn(pos: Vector2):
 	pass
 
+# This is the generic behavior for all spawnables
 func _post_spawn():
 	$Area2D.connect("body_entered", _on_body_entered);
 

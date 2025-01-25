@@ -7,6 +7,7 @@ var initial_pos: Vector2;
 var velocity: Vector2;
 var dir: Vector2;
 
+# fly spawns on position
 static func _spawn(pos: Vector2):
 	var instance = pre.instantiate() as Fly;
 	instance.initial_pos = pos;

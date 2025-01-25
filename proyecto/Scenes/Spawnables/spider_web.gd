@@ -7,7 +7,7 @@ var initial_pos: Vector2;
 var velocity: Vector2;
 var dir: Vector2;
 
-# spider web spawns on position and returns the instance
+# spider web spawns on position
 static func _spawn(pos: Vector2):
 	var instance = pre.instantiate() as SpiderWeb;
 	instance.initial_pos = pos;

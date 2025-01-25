@@ -8,6 +8,7 @@ var velocity: Vector2;
 var dir: Vector2;
 var falling := false;
 
+# collapsed building only takes the x position, the y position is the ceiling
 static func _spawn(pos: Vector2):
 	var instance = pre.instantiate() as CollapsedBuilding;
 	instance.initial_pos = pos;
