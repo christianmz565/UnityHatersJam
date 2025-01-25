@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ilekirgg0e1h"
-path="res://.godot/imported/burbuja.png-bf42f11493b04f64a8bc733211898c6a.ctex"
+uid="uid://dh2jsgcmlygjj"
+path="res://.godot/imported/bubble_gun.png-6ae7b54fbb5ec97492842fa8072bbec4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/burbuja.png"
-dest_files=["res://.godot/imported/burbuja.png-bf42f11493b04f64a8bc733211898c6a.ctex"]
+source_file="res://Assets/bubble_gun.png"
+dest_files=["res://.godot/imported/bubble_gun.png-6ae7b54fbb5ec97492842fa8072bbec4.ctex"]
 
 [params]
 
