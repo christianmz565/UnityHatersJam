@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://c82e3a3mqgkqo"]
+
+[ext_resource type="Script" path="res://Scenes/Map/map.gd" id="1_xur85"]
+[ext_resource type="PackedScene" uid="uid://dafh5lcpxil72" path="res://Scenes/Character/player.tscn" id="2_mwg05"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_daq6t"]
+
+[node name="Map" type="Node2D"]
+script = ExtResource("1_xur85")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("2_mwg05")]
+z_index = 1
+position = Vector2(-744, 0)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -968.0
+offset_top = -552.0
+offset_right = 952.0
+offset_bottom = 536.0
+texture = SubResource("CanvasTexture_daq6t")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, -536, 0, 0)
+width = 20.0
+default_color = Color(1, 0, 0, 1)
