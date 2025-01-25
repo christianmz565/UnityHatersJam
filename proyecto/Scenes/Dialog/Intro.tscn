@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgyddmdhqbolr"]
+
+[ext_resource type="Script" path="res://Scenes/Dialog/intro.gd" id="1_gnu3v"]
+[ext_resource type="FontFile" uid="uid://iccaj5rujfxs" path="res://fonts/pixel_font.ttf" id="1_s7eu1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rv2c0"]
+font = ExtResource("1_s7eu1")
+font_size = 32
+
+[node name="Intro" type="CanvasLayer"]
+script = ExtResource("1_gnu3v")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = -1
+anchor_right = 0.103
+anchor_bottom = 0.099
+offset_left = 18.0
+offset_top = 9.0
+offset_right = -35.656
+offset_bottom = -16.152
+text = "hola"
+label_settings = SubResource("LabelSettings_rv2c0")
