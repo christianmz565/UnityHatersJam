@@ -17,6 +17,7 @@ static func _spawn(pos: Vector2):
 func _physics_process(delta: float) -> void:
 	if falling:
 		position += velocity * delta;
+	
 
 func _ready() -> void:
 	var window_height = get_viewport_rect().size.y;
@@ -33,3 +34,6 @@ func _ready() -> void:
 func _on_detect_area_body_entered(body: Node2D) -> void:
 	if (body is Player):
 		falling = true;
+		
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	queue_free()

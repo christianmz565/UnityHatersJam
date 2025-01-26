@@ -18,5 +18,5 @@ func _physics_process(_delta: float) -> void:
 		move_and_slide();
 	
 func destroy() -> void:
-	visible = false;
+	animated_sprite.play("dead")
 	print("Perdiste");

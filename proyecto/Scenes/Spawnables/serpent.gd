@@ -5,6 +5,7 @@ static var pre := preload("res://Scenes/Spawnables/Serpent.tscn");
 var initial_pos: Vector2;
 @export var speed: float;
 @export var attack_time: float;
+@export var health: float = 100.0;
 var velocity: Vector2;
 var dir: Vector2;
 var attacking := false;
@@ -47,4 +48,9 @@ func _on_attack_timer_timeout() -> void:
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	queue_free()
+	queue_free();
+	
+func take_damage(damage: float) -> void:
+	health -= damage;
+	if health <= 0:
+		queue_free();
