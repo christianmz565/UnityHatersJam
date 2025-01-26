@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 func _ready() -> void:
-	SceneManager._setup();
+	SceneManager._setup($TransitionAnim);
