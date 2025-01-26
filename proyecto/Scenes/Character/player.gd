@@ -2,6 +2,8 @@ extends CharacterBody2D
 class_name Player
 
 @export var speed: float = 400.0
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+
 static var Instance: Player
 
 func _ready() -> void:

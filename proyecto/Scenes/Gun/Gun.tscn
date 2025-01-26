@@ -57,7 +57,7 @@ animations = [{
 script = ExtResource("1_aqxs1")
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(24, 0)
+position = Vector2(72, 0)
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -66,6 +66,7 @@ rotation = 0.785398
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_buyqr")
 animation = &"idle"
+offset = Vector2(7.82237, -7.99914)
 
 [node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_f7tuc")

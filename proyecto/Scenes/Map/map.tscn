@@ -19,6 +19,7 @@ zoom = Vector2(0.6, 0.6)
 [node name="Player" parent="." instance=ExtResource("2_mwg05")]
 z_index = 1
 position = Vector2(-744, 0)
+speed = 600.0
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
