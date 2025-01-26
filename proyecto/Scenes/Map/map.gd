@@ -4,10 +4,10 @@ extends Node2D
 @onready var player: CharacterBody2D = $Player;
 
 @export var enemy_types: Dictionary = {
-	# "Fly": Fly,
-	# "Serpent": Serpent,
+ 	"Fly": Fly,
+	"Serpent": Serpent,
 	"CollapsedBuilding": CollapsedBuilding,
-	# "SpiderWeb": SpiderWeb
+	"SpiderWeb": SpiderWeb
 }
 
 @export var camera_speed: float = 100.0;
@@ -15,10 +15,10 @@ extends Node2D
 @export var spawn_distance: float = 500.0;
 
 var spawn_intervals = {
-	# "SpiderWeb": {"min": 4.0, "max": 8.0},
-	# "Serpent": {"min": 8.0, "max": 16.0},
-	# "Fly": {"min": 2.0, "max": 6.0},
-	"CollapsedBuilding": {"min": 2.0, "max": 4.0}
+	"SpiderWeb": {"min": 4.0, "max": 8.0},
+	"Serpent": {"min": 8.0, "max": 16.0},
+	"Fly": {"min": 2.0, "max": 6.0},
+	"CollapsedBuilding": {"min": 10.0, "max": 20.0}
 }
 
 var enemies: Array[Spawnable] = [];
