@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c82e3a3mqgkqo"]
+[gd_scene load_steps=13 format=3 uid="uid://c82e3a3mqgkqo"]
 
 [ext_resource type="Script" path="res://Scenes/Map/map.gd" id="1_xur85"]
 [ext_resource type="PackedScene" uid="uid://dafh5lcpxil72" path="res://Scenes/Character/player.tscn" id="2_mwg05"]
@@ -8,6 +8,19 @@
 [ext_resource type="Texture2D" uid="uid://bry8gcfnryw1o" path="res://Assets/Map/houses2.png" id="6_5j84g"]
 [ext_resource type="Texture2D" uid="uid://dg5r6rjih28h0" path="res://Assets/Map/houses1.png" id="7_b8dj8"]
 [ext_resource type="Texture2D" uid="uid://crgnt2v6ln4lb" path="res://Assets/Map/road.png" id="8_ri6dk"]
+[ext_resource type="PackedScene" uid="uid://da8a3svnft1d3" path="res://Scenes/Particles/RainParticles.tscn" id="9_48hr4"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_aeq6d"]
+a = Vector2(0, 544)
+b = Vector2(0, -544)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_i3b8e"]
+a = Vector2(-960, -544)
+b = Vector2(960, -544)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_nhwwd"]
+a = Vector2(-960, 544)
+b = Vector2(960, 544)
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_xur85")
@@ -75,3 +88,19 @@ motion_mirroring = Vector2(1920, 0)
 modulate = Color(0.473976, 0.473975, 0.473976, 1)
 position = Vector2(960, 0)
 texture = ExtResource("8_ri6dk")
+
+[node name="RainParticles" parent="." instance=ExtResource("9_48hr4")]
+position = Vector2(0, -536)
+scale = Vector2(2, 2)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="LeftBoundary" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-960, 0)
+shape = SubResource("SegmentShape2D_aeq6d")
+
+[node name="UpperBoundary" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_i3b8e")
+
+[node name="BottomBoundary" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_nhwwd")
