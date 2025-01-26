@@ -198,7 +198,6 @@ autoplay = true
 script = ExtResource("8_uvj3l")
 
 [node name="Credits" type="ColorRect" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -319,6 +318,13 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3_fy4xn")
 theme_override_font_sizes/font_size = 16
 text = "https://www.zapsplat.com/"
+horizontal_alignment = 1
+
+[node name="Label18" type="Label" parent="Credits/ScrollContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fy4xn")
+theme_override_font_sizes/font_size = 16
+text = "https://www.vecteezy.com/"
 horizontal_alignment = 1
 
 [node name="Label5" type="Label" parent="Credits/ScrollContainer/CenterContainer/VBoxContainer"]
