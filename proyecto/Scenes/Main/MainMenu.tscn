@@ -1,8 +1,37 @@
-[gd_scene load_steps=2 format=3 uid="uid://dpnkey5bb6lw6"]
+[gd_scene load_steps=14 format=3 uid="uid://dpnkey5bb6lw6"]
 
 [ext_resource type="Script" path="res://Scenes/Main/main_menu.gd" id="1_kgptu"]
+[ext_resource type="Texture2D" uid="uid://djp4rxqtmeq1m" path="res://Resources/Backgrounds/War2.png" id="2_fiafh"]
+[ext_resource type="FontFile" uid="uid://iccaj5rujfxs" path="res://fonts/pixel_font.ttf" id="3_fy4xn"]
+[ext_resource type="Texture2D" uid="uid://c44ugsiv0rmf5" path="res://Resources/Icons/music-solid.svg" id="4_tbc2j"]
+[ext_resource type="Texture2D" uid="uid://bdl3a853yqx87" path="res://Resources/Particles/buble.png" id="4_wl3bn"]
+[ext_resource type="Texture2D" uid="uid://byk51bdngtdfh" path="res://Resources/Icons/volume-high-solid.svg" id="5_q3osk"]
+[ext_resource type="AudioStream" uid="uid://34g5qhttkoy6" path="res://Resources/Music/MainMenu.mp3" id="7_q000q"]
+[ext_resource type="Script" path="res://CustomTypes/AudioPlayer.gd" id="8_uvj3l"]
 
-[node name="MainMenu" type="Control"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ixfc5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2jtxb"]
+bg_color = Color(1, 1, 1, 0.054902)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ch4ql"]
+
+[sub_resource type="Theme" id="Theme_h4o55"]
+default_font = ExtResource("3_fy4xn")
+Button/styles/focus = SubResource("StyleBoxEmpty_ixfc5")
+Button/styles/hover = SubResource("StyleBoxFlat_2jtxb")
+Button/styles/normal = SubResource("StyleBoxEmpty_ch4ql")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_io6ff"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(700, 400, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, -100, 0)
+color = Color(0.669315, 0.669315, 0.669315, 1)
+turbulence_enabled = true
+
+[node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,6 +39,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kgptu")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.324203, 0.324203, 0.324203, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -36.0
+offset_right = 64.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_fiafh")
+expand_mode = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -19,8 +63,95 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
-text = "tfsadkjhsafhkjajkhasfkd"
+alignment = 1
 
-[connection signal="pressed" from="CenterContainer/Button" to="." method="_on_button_pressed"]
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fy4xn")
+theme_override_font_sizes/font_size = 100
+text = "THE BUBBLE"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fy4xn")
+theme_override_font_sizes/font_size = 90
+text = "OPERATION"
+horizontal_alignment = 1
+
+[node name="Container" type="Control" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_h4o55")
+theme_override_font_sizes/font_size = 50
+text = "Start"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -246.0
+offset_top = 11.0
+offset_right = -12.0
+offset_bottom = 54.0
+grow_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+texture = ExtResource("4_tbc2j")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MusicSlider" type="HSlider" parent="Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+texture = ExtResource("5_q3osk")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SFXSlider" type="HSlider" parent="Control/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(589, 353)
+amount = 150
+process_material = SubResource("ParticleProcessMaterial_io6ff")
+texture = ExtResource("4_wl3bn")
+lifetime = 4.0
+preprocess = 5.0
+visibility_rect = Rect2(0, 0, 0, 0)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_q000q")
+autoplay = true
+script = ExtResource("8_uvj3l")
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="value_changed" from="Control/VBoxContainer/HBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="Control/VBoxContainer/HBoxContainer2/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
