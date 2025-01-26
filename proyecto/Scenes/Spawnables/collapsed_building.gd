@@ -32,6 +32,7 @@ func _ready() -> void:
 	dir = valid_dir;
 	velocity = valid_dir * speed;
 
+	audio.play()
 	_post_spawn();
 
 func _on_detect_area_body_entered(body: Node2D) -> void:

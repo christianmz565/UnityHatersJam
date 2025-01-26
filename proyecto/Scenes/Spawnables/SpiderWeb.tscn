@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dlvtfjpb0olkp"]
+[gd_scene load_steps=11 format=3 uid="uid://dlvtfjpb0olkp"]
 
 [ext_resource type="Script" path="res://Scenes/Spawnables/spider_web.gd" id="1_ivqn8"]
 [ext_resource type="Texture2D" uid="uid://biktyj4bnnxdt" path="res://Assets/Spawneables/web.png" id="2_r51ax"]
+[ext_resource type="AudioStream" uid="uid://bpwpmrqgdxxmw" path="res://Assets/SoundsGame/creatures/web/spider.mp3" id="3_lwakc"]
+[ext_resource type="Script" path="res://CustomTypes/AudioPlayer.gd" id="4_fo6es"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b116m"]
 radius = 30.0167
@@ -61,5 +63,10 @@ scale = Vector2(3.5, 3.5)
 sprite_frames = SubResource("SpriteFrames_o7ide")
 autoplay = "default"
 frame_progress = 0.382338
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_lwakc")
+script = ExtResource("4_fo6es")
+type = 1
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
