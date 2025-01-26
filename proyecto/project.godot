@@ -21,6 +21,11 @@ SceneManager="*res://Singletons/SceneManager.gd"
 Globals="*res://Singletons/Globals.gd"
 DialogueBox="*res://Singletons/DialogueBox.tscn"
 
+[display]
+
+window/size/viewport_width=1024
+window/size/viewport_height=768
+
 [input]
 
 shoot_gun={

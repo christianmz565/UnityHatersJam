@@ -12,16 +12,16 @@
 [ext_resource type="Script" path="res://CustomTypes/AudioPlayer.gd" id="11_ibm1h"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_aeq6d"]
-a = Vector2(0, 544)
-b = Vector2(0, -544)
+a = Vector2(0, 576)
+b = Vector2(0, -600)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_i3b8e"]
-a = Vector2(-960, -544)
-b = Vector2(960, -544)
+a = Vector2(-808, -608)
+b = Vector2(816, -608)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_nhwwd"]
-a = Vector2(-960, 544)
-b = Vector2(960, 544)
+a = Vector2(-808, 608)
+b = Vector2(808, 608)
 
 [sub_resource type="AudioStreamMP3" id="AudioStreamMP3_ubg65"]
 
@@ -30,11 +30,11 @@ script = ExtResource("1_xur85")
 camera_speed = 300.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.6, 0.6)
+zoom = Vector2(0.63, 0.63)
 
 [node name="Player" parent="." instance=ExtResource("2_mwg05")]
 z_index = 1
-position = Vector2(-744, 0)
+position = Vector2(-592, 8)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -44,7 +44,8 @@ motion_mirroring = Vector2(1920, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky"]
 modulate = Color(0.458405, 0.458405, 0.458405, 1)
-position = Vector2(960, 0)
+position = Vector2(960, 6.66661)
+scale = Vector2(1, 1.14815)
 texture = ExtResource("3_xl7sn")
 
 [node name="HousesBackGround" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -53,7 +54,8 @@ motion_mirroring = Vector2(1920, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/HousesBackGround"]
 modulate = Color(0.288518, 0.288518, 0.288518, 1)
-position = Vector2(960, 0)
+position = Vector2(960, -3.38554e-05)
+scale = Vector2(1, 1.16049)
 texture = ExtResource("4_oby45")
 
 [node name="Houses 1" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -93,13 +95,14 @@ position = Vector2(960, 0)
 texture = ExtResource("8_ri6dk")
 
 [node name="RainParticles" parent="." instance=ExtResource("9_48hr4")]
+visible = false
 position = Vector2(0, -536)
 scale = Vector2(2, 2)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="LeftBoundary" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-960, 0)
+position = Vector2(-816, 8)
 shape = SubResource("SegmentShape2D_aeq6d")
 
 [node name="UpperBoundary" type="CollisionShape2D" parent="StaticBody2D"]
@@ -109,5 +112,6 @@ shape = SubResource("SegmentShape2D_i3b8e")
 shape = SubResource("SegmentShape2D_nhwwd")
 
 [node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
+visible = false
 stream = SubResource("AudioStreamMP3_ubg65")
 script = ExtResource("11_ibm1h")
