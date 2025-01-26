@@ -18,7 +18,7 @@ class_name Map
 var spawn_data = {
 	"SpiderWeb": {"min": 10.0, "max": 12.0, "am_min": 2, "am_max": 3},
 	"Serpent": {"min": 8.0, "max": 16.0, "am_min": 3, "am_max": 5},
-	"Fly": {"min": 2.0, "max": 6.0, "am_min": 2, "am_max": 3},
+	"Fly": {"min": 4.0, "max": 6.0, "am_min": 2, "am_max": 3},
 	"CollapsedBuilding": {"min": 10.0, "max": 20.0, "am_min": 1, "am_max": 1}
 }
 
@@ -75,8 +75,8 @@ func _is_valid_spawn_position(spawn_position: Vector2, enemy_type: String) -> bo
 	return true;
 	
 func _set_random_spawn_timer(timer: Timer, interval: Dictionary) -> void:
-	var min_time = interval.get("min", 0.5)
-	var max_time = interval.get("max", 2.0)
+	var min_time = interval.get("min")
+	var max_time = interval.get("max")
 	if min_time >= max_time:
 		push_error("El intervalo de spawn no es válido para el temporizador: " + timer.name)
 		return

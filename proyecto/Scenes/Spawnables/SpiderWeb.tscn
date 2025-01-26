@@ -14,6 +14,7 @@ radius = 30.0167
 scale = Vector2(4, 4)
 script = ExtResource("1_ivqn8")
 speed = 20.0
+health = 90.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(2.625, 2.625)
