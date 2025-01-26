@@ -5,7 +5,7 @@ const bullet = preload("res://Scenes/Bullet/bullet.tscn")
 @onready var marker: Marker2D = $Marker2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var timer: Timer = $Timer
-@onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var audio_player: AudioPlayer = $AudioPlayer
 
 @export var attack_speed: float = 0.5
 

@@ -1,15 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://c82e3a3mqgkqo"]
+[gd_scene load_steps=9 format=3 uid="uid://c82e3a3mqgkqo"]
 
 [ext_resource type="Script" path="res://Scenes/Map/map.gd" id="1_xur85"]
 [ext_resource type="PackedScene" uid="uid://dafh5lcpxil72" path="res://Scenes/Character/player.tscn" id="2_mwg05"]
 [ext_resource type="Texture2D" uid="uid://beovxirk1jl34" path="res://Assets/Map/sky.png" id="3_xl7sn"]
 [ext_resource type="Texture2D" uid="uid://dt24f3nxcd1ai" path="res://Assets/Map/houses4.png" id="4_oby45"]
+[ext_resource type="Texture2D" uid="uid://8niwv70ebpm8" path="res://Assets/Map/houses3.png" id="5_n7ofv"]
+[ext_resource type="Texture2D" uid="uid://bry8gcfnryw1o" path="res://Assets/Map/houses2.png" id="6_5j84g"]
+[ext_resource type="Texture2D" uid="uid://dg5r6rjih28h0" path="res://Assets/Map/houses1.png" id="7_b8dj8"]
+[ext_resource type="Texture2D" uid="uid://crgnt2v6ln4lb" path="res://Assets/Map/road.png" id="8_ri6dk"]
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_xur85")
 camera_speed = 300.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.6, 0.6)
 
 [node name="Player" parent="." instance=ExtResource("2_mwg05")]
 z_index = 1
@@ -22,20 +27,51 @@ motion_scale = Vector2(0.5, 1)
 motion_mirroring = Vector2(1920, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky"]
-modulate = Color(0.505344, 0.505344, 0.505344, 1)
+modulate = Color(0.458405, 0.458405, 0.458405, 1)
 position = Vector2(960, 0)
 texture = ExtResource("3_xl7sn")
 
 [node name="HousesBackGround" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.8, 1)
+motion_scale = Vector2(0.6, 1)
 motion_mirroring = Vector2(1920, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/HousesBackGround"]
+modulate = Color(0.288518, 0.288518, 0.288518, 1)
 position = Vector2(960, 0)
 texture = ExtResource("4_oby45")
 
 [node name="Houses 1" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.7, 1)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Houses 1"]
+modulate = Color(0.481789, 0.481789, 0.481789, 1)
+position = Vector2(960, 0)
+texture = ExtResource("5_n7ofv")
 
 [node name="Houses 2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.8, 1)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Houses 2"]
+modulate = Color(0.525101, 0.525101, 0.525101, 1)
+position = Vector2(968, -8)
+texture = ExtResource("6_5j84g")
 
 [node name="Houses 3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.9, 1)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Houses 3"]
+modulate = Color(0.540991, 0.54099, 0.540991, 1)
+position = Vector2(960, 0)
+texture = ExtResource("7_b8dj8")
+
+[node name="Floor" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.9, 1)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Floor"]
+modulate = Color(0.473976, 0.473975, 0.473976, 1)
+position = Vector2(960, 0)
+texture = ExtResource("8_ri6dk")

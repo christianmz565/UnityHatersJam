@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://d2u24r30pav7s"]
+[gd_scene load_steps=11 format=3 uid="uid://d2u24r30pav7s"]
 
 [ext_resource type="Script" path="res://Scenes/Gun/gun.gd" id="1_aqxs1"]
 [ext_resource type="Texture2D" uid="uid://dlno4ak1oeu3c" path="res://Assets/Player/bubble-gun.png" id="2_c8s8r"]
 [ext_resource type="AudioStream" uid="uid://crxmbm3rychek" path="res://Assets/Player/pistol.wav" id="3_f7tuc"]
+[ext_resource type="Script" path="res://CustomTypes/AudioPlayer.gd" id="4_ocdw3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0fc7h"]
 atlas = ExtResource("2_c8s8r")
@@ -66,7 +67,9 @@ scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_buyqr")
 animation = &"idle"
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_f7tuc")
+script = ExtResource("4_ocdw3")
+type = 1
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
