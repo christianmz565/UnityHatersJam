@@ -1,6 +1,8 @@
 extends Spawnable
 class_name Fly
 
+@export var health: float = 60;
+
 static var pre := preload("res://Scenes/Spawnables/Fly.tscn");
 var initial_pos: Vector2;
 @export var speed: float;
@@ -27,3 +29,8 @@ func _ready() -> void:
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
+	
+func take_damage(damage: float) -> void:
+	health -= damage;
+	if health <= 0:
+		queue_free();

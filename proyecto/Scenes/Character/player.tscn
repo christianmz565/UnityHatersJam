@@ -1,11 +1,28 @@
-[gd_scene load_steps=10 format=3 uid="uid://dafh5lcpxil72"]
+[gd_scene load_steps=15 format=3 uid="uid://dafh5lcpxil72"]
 
 [ext_resource type="Script" path="res://Scenes/Character/player.gd" id="1_n3m1l"]
 [ext_resource type="PackedScene" uid="uid://d2u24r30pav7s" path="res://Scenes/Gun/Gun.tscn" id="3_jafsv"]
+[ext_resource type="Texture2D" uid="uid://cndayvvpv8p2g" path="res://Assets/Player/dead.png" id="3_yip7k"]
 [ext_resource type="Texture2D" uid="uid://da163ax5x4r3" path="res://Assets/Player/player.png" id="4_m7ljt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aee7f"]
 radius = 10.3333
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sc7e6"]
+atlas = ExtResource("3_yip7k")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i31v4"]
+atlas = ExtResource("3_yip7k")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47ydw"]
+atlas = ExtResource("3_yip7k")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbqyg"]
+atlas = ExtResource("3_yip7k")
+region = Rect2(16, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mxyra"]
 atlas = ExtResource("4_m7ljt")
@@ -25,6 +42,23 @@ region = Rect2(16, 16, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ywuen"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sc7e6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i31v4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47ydw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbqyg")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 4.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mxyra")
@@ -56,5 +90,7 @@ shape = SubResource("CircleShape2D_aee7f")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_ywuen")
-animation = &"moving"
+animation = &"dead"
 autoplay = "moving"
+frame = 3
+frame_progress = 1.0
