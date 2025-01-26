@@ -18,5 +18,6 @@ func _physics_process(_delta: float) -> void:
 		move_and_slide();
 	
 func destroy() -> void:
-	animated_sprite.play("dead")
-	print("Perdiste");
+	animated_sprite.play("dead");
+	await get_tree().create_timer(2.0).timeout;
+	SceneManager.change_scene("main_scoring");

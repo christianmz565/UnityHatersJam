@@ -4,8 +4,8 @@ var currentScene: Node;
 var transition_anim: AnimationPlayer;
 var gameScenes = {
 	"main_menu": preload("res://Scenes/Main/MainMenu.tscn"),
-	"main_game": preload("res://Scenes/Main/MainGame.tscn"),
-	"main_scoring": preload("res://Scenes/Main/MainScoring.tscn"),
+	"main_game": preload("res://Scenes/Map/map.tscn"),
+	"main_scoring": preload("res://Scenes/Main/MainScoring.tscn")
 };
 
 func _setup(p_transition_anim: AnimationPlayer):
