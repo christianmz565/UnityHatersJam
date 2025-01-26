@@ -7,11 +7,11 @@
 atlas = ExtResource("2_8yfe0")
 region = Rect2(48, 0, 32, 32)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ocdlh"]
-radius = 38.0132
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hejee"]
 size = Vector2(149.333, 667.333)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ocdlh"]
+radius = 38.0132
 
 [node name="CollapsedBuilding" type="Node2D"]
 scale = Vector2(2, 2)
@@ -22,15 +22,15 @@ speed = 300.0
 scale = Vector2(3, 3)
 texture = SubResource("AtlasTexture_o5kkq")
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_ocdlh")
-
 [node name="DetectArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea"]
 position = Vector2(-2, 298)
 shape = SubResource("RectangleShape2D_hejee")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ocdlh")
 
 [connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]

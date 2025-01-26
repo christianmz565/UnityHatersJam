@@ -31,5 +31,5 @@ func _ready() -> void:
 	_post_spawn();
 
 func _on_detect_area_body_entered(body: Node2D) -> void:
-	if (body is TestShip):
+	if (body is Player):
 		falling = true;

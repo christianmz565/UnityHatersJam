@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cd1hpulp40ap"
-path="res://.godot/imported/bubble_projectile.png-b5581e2f0cb1af40fdb6c79fb4a3a428.ctex"
+uid="uid://dt24f3nxcd1ai"
+path="res://.godot/imported/houses4.png-8e3b456f98e818ddbb01b6f82276b4d3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/bubble_projectile.png"
-dest_files=["res://.godot/imported/bubble_projectile.png-b5581e2f0cb1af40fdb6c79fb4a3a428.ctex"]
+source_file="res://Assets/Map/houses4.png"
+dest_files=["res://.godot/imported/houses4.png-8e3b456f98e818ddbb01b6f82276b4d3.ctex"]
 
 [params]
 

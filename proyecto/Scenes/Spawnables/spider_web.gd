@@ -18,8 +18,10 @@ func _ready() -> void:
 	var valid_dir = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized();
 	dir = valid_dir;
 	velocity = valid_dir * speed;
-	
 	_post_spawn();
 
 func _physics_process(delta: float) -> void:
 	position += velocity * delta;
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	queue_free()

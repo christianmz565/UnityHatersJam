@@ -14,14 +14,16 @@ static func _spawn(pos: Vector2):
 	return instance;
 
 func _process(_delta: float) -> void:
-	$Sprite.flip_h = global_position.x < TestShip.Instance.global_position.x;
+	$Sprite.flip_h = global_position.x < Player.Instance.global_position.x;
 
 func _physics_process(delta: float) -> void:
-	dir = global_position.direction_to(TestShip.Instance.global_position);
+	dir = global_position.direction_to(Player.Instance.global_position);
 	velocity = dir * speed;
 	position += velocity * delta;
 
 func _ready() -> void:
 	position = initial_pos;
-
 	_post_spawn();
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	queue_free()

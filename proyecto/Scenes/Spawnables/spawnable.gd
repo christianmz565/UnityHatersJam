@@ -11,5 +11,5 @@ func _post_spawn():
 	$Area2D.connect("body_entered", _on_body_entered);
 
 func _on_body_entered(body: Node2D):
-	if (body is TestShip):
+	if (body is Player):
 		body.destroy();

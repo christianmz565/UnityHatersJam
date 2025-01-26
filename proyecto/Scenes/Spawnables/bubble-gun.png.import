@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dh2jsgcmlygjj"
-path="res://.godot/imported/bubble_gun.png-6ae7b54fbb5ec97492842fa8072bbec4.ctex"
+uid="uid://d2bll2vianrk3"
+path="res://.godot/imported/bubble-gun.png-c3ceb7e475980918609c3b8521331981.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/bubble_gun.png"
-dest_files=["res://.godot/imported/bubble_gun.png-6ae7b54fbb5ec97492842fa8072bbec4.ctex"]
+source_file="res://Scenes/Spawnables/bubble-gun.png"
+dest_files=["res://.godot/imported/bubble-gun.png-c3ceb7e475980918609c3b8521331981.ctex"]
 
 [params]
 

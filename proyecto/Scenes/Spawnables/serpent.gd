@@ -26,7 +26,7 @@ func _ready() -> void:
 	var valid_pos = Vector2(initial_pos.x, y_pos);
 	position = valid_pos;
 
-	var angle = global_position.angle_to_point(TestShip.Instance.global_position) + randf_range(-PI / 8, PI / 8);
+	var angle = global_position.angle_to_point(Player.Instance.global_position) + randf_range(-PI / 8, PI / 8);
 	var valid_angle = angle - PI / 2;
 	var valid_dir = Vector2(cos(angle), sin(angle));
 	rotation = valid_angle;
@@ -44,3 +44,7 @@ func prepare_attack():
 func _on_attack_timer_timeout() -> void:
 	attacking = true;
 	$WarningSprite.visible = false;
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	queue_free()

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ilekirgg0e1h"
-path="res://.godot/imported/bubble.png-4f622bf5dead01ad02751fedd8e90ac4.ctex"
+uid="uid://bry8gcfnryw1o"
+path="res://.godot/imported/houses2.png-39cf23d085ca51d9752705047662fd22.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/bubble.png"
-dest_files=["res://.godot/imported/bubble.png-4f622bf5dead01ad02751fedd8e90ac4.ctex"]
+source_file="res://Assets/Map/houses2.png"
+dest_files=["res://.godot/imported/houses2.png-39cf23d085ca51d9752705047662fd22.ctex"]
 
 [params]
 
