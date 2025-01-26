@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dpnkey5bb6lw6"]
+[gd_scene load_steps=17 format=3 uid="uid://dpnkey5bb6lw6"]
 
 [ext_resource type="Script" path="res://Scenes/Main/main_menu.gd" id="1_kgptu"]
 [ext_resource type="Texture2D" uid="uid://djp4rxqtmeq1m" path="res://Resources/Backgrounds/War2.png" id="2_fiafh"]
@@ -6,8 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://c44ugsiv0rmf5" path="res://Resources/Icons/music-solid.svg" id="4_tbc2j"]
 [ext_resource type="Texture2D" uid="uid://bdl3a853yqx87" path="res://Resources/Particles/buble.png" id="4_wl3bn"]
 [ext_resource type="Texture2D" uid="uid://byk51bdngtdfh" path="res://Resources/Icons/volume-high-solid.svg" id="5_q3osk"]
+[ext_resource type="Texture2D" uid="uid://csbr56vfqpsg4" path="res://Resources/Icons/circle-info-solid.svg" id="6_ethvj"]
 [ext_resource type="AudioStream" uid="uid://34g5qhttkoy6" path="res://Resources/Music/MainMenu.mp3" id="7_q000q"]
 [ext_resource type="Script" path="res://CustomTypes/AudioPlayer.gd" id="8_uvj3l"]
+[ext_resource type="Texture2D" uid="uid://c1f7r2e44aory" path="res://Resources/Icons/x-solid.svg" id="10_r2b5o"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ixfc5"]
 
@@ -30,6 +32,9 @@ emission_box_extents = Vector3(1, 1, 1)
 gravity = Vector3(0, -100, 0)
 color = Color(0.669315, 0.669315, 0.669315, 1)
 turbulence_enabled = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t8lej"]
+bg_color = Color(0.111197, 0.111197, 0.111197, 1)
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -91,7 +96,7 @@ theme = SubResource("Theme_h4o55")
 theme_override_font_sizes/font_size = 50
 text = "Start"
 
-[node name="Control" type="Control" parent="."]
+[node name="Audio" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -102,7 +107,7 @@ offset_right = -12.0
 offset_bottom = 54.0
 grow_horizontal = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Audio"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -110,33 +115,73 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Audio/VBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Audio/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 texture = ExtResource("4_tbc2j")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="MusicSlider" type="HSlider" parent="Control/VBoxContainer/HBoxContainer"]
+[node name="MusicSlider" type="HSlider" parent="Audio/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Audio/VBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/HBoxContainer2"]
+[node name="TextureRect" type="TextureRect" parent="Audio/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 texture = ExtResource("5_q3osk")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="SFXSlider" type="HSlider" parent="Control/VBoxContainer/HBoxContainer2"]
+[node name="SFXSlider" type="HSlider" parent="Audio/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="OpenCredits" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -177.0
+offset_top = -57.0
+offset_right = -15.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="OpenCredits"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -158.0
+offset_top = -49.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="OpenCredits/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+texture = ExtResource("6_ethvj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="OpenCredits/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fy4xn")
+theme_override_font_sizes/font_size = 30
+text = "Credits"
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(589, 353)
@@ -152,6 +197,191 @@ stream = ExtResource("7_q000q")
 autoplay = true
 script = ExtResource("8_uvj3l")
 
+[node name="Credits" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.372549, 0.372549, 0.372549, 0.356863)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Credits"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -338.5
+offset_top = -188.5
+offset_right = 338.5
+offset_bottom = 188.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t8lej")
+
+[node name="CenterContainer" type="CenterContainer" parent="Credits/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Credits/ScrollContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Credits/ScrollContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fy4xn")
+theme_override_font_sizes/font_size = 50
+text = "CREDITS"
+horizontal_alignment = 1
+
+[node name="Authors" type="Label" parent="Credits/ScrollContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fy4xn")
+theme_override_font_sizes/font_size = 30
+text = "MADE BY"
+horizontal_alignment = 1
+
+[node name="Label15" type="Label" parent="Credits/ScrollContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fy4xn")
+theme_override_font_sizes/font_size = 16
+text = "Alsnj20"
+horizontal_alignment = 1
+
+[node name="Label14" type="Label" parent="Credits/ScrollContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fy4xn")
+theme_override_font_sizes/font_size = 16
+text = "Alvaro_Quispe"
+horizontal_alignment = 1
+
+[node name="Label11" type="Label" parent="Credits/ScrollContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fy4xn")
+theme_override_font_sizes/font_size = 16
+text = "cmestasz"
+horizontal_alignment = 1
+
+[node name="Label12" type="Label" parent="Credits/ScrollContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fy4xn")
+theme_override_font_sizes/font_size = 16
+text = "RyanValdivia"
+horizontal_alignment = 1
+
+[node name="Label13" type="Label" parent="Credits/ScrollContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fy4xn")
+theme_override_font_sizes/font_size = 16
+text = "ynoacamino"
+horizontal_alignment = 1
+
+[node name="Label16" type="Label" parent="Credits/ScrollContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fy4xn")
+theme_override_font_sizes/font_size = 20
+text = "for the GGJ 2025, with the theme"
+horizontal_alignment = 1
+
+[node name="Label17" type="Label" parent="Credits/ScrollContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fy4xn")
+theme_override_font_sizes/font_size = 20
+text = "\"BUBBLE\""
+horizontal_alignment = 1
+
+[node name="Assets" type="Label" parent="Credits/ScrollContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fy4xn")
+theme_override_font_sizes/font_size = 30
+text = "ASSETS"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Credits/ScrollContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fy4xn")
+theme_override_font_sizes/font_size = 16
+text = "https://craftpix.net/freebies/free-war-pixel-art-2d-backgrounds/"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Credits/ScrollContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fy4xn")
+theme_override_font_sizes/font_size = 16
+text = "https://fontawesome.com/"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Credits/ScrollContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fy4xn")
+theme_override_font_sizes/font_size = 16
+text = "https://www.zapsplat.com/"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="Credits/ScrollContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fy4xn")
+theme_override_font_sizes/font_size = 16
+text = "https://freesound.org/"
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="Credits/ScrollContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fy4xn")
+theme_override_font_sizes/font_size = 16
+text = "https://freesound.org/people/Seth_Makes_Sounds/sounds/683457/"
+horizontal_alignment = 1
+
+[node name="Tools" type="Label" parent="Credits/ScrollContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fy4xn")
+theme_override_font_sizes/font_size = 30
+text = "TOOLS"
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="Credits/ScrollContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fy4xn")
+theme_override_font_sizes/font_size = 16
+text = "https://sfxr.me/"
+horizontal_alignment = 1
+
+[node name="Label8" type="Label" parent="Credits/ScrollContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fy4xn")
+theme_override_font_sizes/font_size = 16
+text = "https://godotengine.org/"
+horizontal_alignment = 1
+
+[node name="Label9" type="Label" parent="Credits/ScrollContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fy4xn")
+theme_override_font_sizes/font_size = 16
+text = "https://www.photopea.com/"
+horizontal_alignment = 1
+
+[node name="Label10" type="Label" parent="Credits/ScrollContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fy4xn")
+theme_override_font_sizes/font_size = 16
+text = "https://libresprite.github.io/"
+horizontal_alignment = 1
+
+[node name="CloseCredits" type="TextureRect" parent="Credits"]
+layout_mode = 0
+offset_left = 850.0
+offset_top = 150.0
+offset_right = 890.0
+offset_bottom = 190.0
+texture = ExtResource("10_r2b5o")
+expand_mode = 1
+stretch_mode = 5
+
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
-[connection signal="value_changed" from="Control/VBoxContainer/HBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
-[connection signal="value_changed" from="Control/VBoxContainer/HBoxContainer2/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="value_changed" from="Audio/VBoxContainer/HBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="Audio/VBoxContainer/HBoxContainer2/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="gui_input" from="OpenCredits" to="." method="_on_open_credits_gui_input"]
+[connection signal="gui_input" from="Credits/CloseCredits" to="." method="_on_close_credits_gui_input"]

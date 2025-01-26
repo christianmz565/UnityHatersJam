@@ -1,0 +1,129 @@
+[gd_scene load_steps=7 format=3 uid="uid://bai08q775adhc"]
+
+[ext_resource type="FontFile" uid="uid://iccaj5rujfxs" path="res://fonts/pixel_font.ttf" id="1_2fifs"]
+[ext_resource type="Script" path="res://Singletons/dialogue_box.gd" id="1_uluv5"]
+
+[sub_resource type="Animation" id="Animation_bndns"]
+resource_name = "diag_in"
+length = 0.75
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(672, -0.25, 0, 0.133333, -161, 381, -0.333333, 25, 0.25, 0),
+"times": PackedFloat32Array(0, 0.733333)
+}
+
+[sub_resource type="Animation" id="Animation_4h6la"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_ddlhf"]
+resource_name = "diag_out"
+length = 0.75
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(381, -0.25, 0, 0.0666667, 133, 704, -0.3, 1, 0.25, 0),
+"times": PackedFloat32Array(0, 0.733333)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_so7j2"]
+_data = {
+"RESET": SubResource("Animation_4h6la"),
+"diag_in": SubResource("Animation_bndns"),
+"diag_out": SubResource("Animation_ddlhf")
+}
+
+[node name="DialogueBox" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uluv5")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -648.0
+offset_bottom = -381.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.643137, 0.643137, 0.643137, 0.419608)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 27.0
+offset_top = 21.0
+offset_right = -27.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sender" type="Label" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_2fifs")
+theme_override_font_sizes/font_size = 50
+text = "SENDER:"
+
+[node name="Text" type="RichTextLabel" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_2fifs")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "wasaaaaaaaaaaaaaaaaaaaaaaa"
+fit_content = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_so7j2")
+}
