@@ -9,16 +9,6 @@ var write_delay: float = 0.025
 
 func _ready() -> void:
 	visible = false;
-	send_dialogues(
-		[
-			["Narrator", "Welcome to the game!", 1],
-			["Narrator", "Press the arrow keys to move around.", 1],
-			["Narrator", "Press the space bar to jump.", 1],
-			["Narrator", "Collect coins to increase your score.", 1],
-			["Narrator", "Avoid the obstacles to stay alive.", 1],
-			["Narrator", "Good luck!", 1]
-		]
-	)
 
 func send_dialogues(dialogues: Array) -> void:
 	for dialogue in dialogues:
