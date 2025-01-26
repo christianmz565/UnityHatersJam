@@ -3,12 +3,14 @@ class_name Map
 
 @onready var camera: Camera2D = $Camera2D;
 @onready var player: CharacterBody2D = $Player;
+@onready var rain: RainParticles = $RainParticles
+@onready var boundaries: StaticBody2D = $StaticBody2D
 
 @export var enemy_types: Dictionary = {
- 	"Fly": Fly,
-	"Serpent": Serpent,
-	"CollapsedBuilding": CollapsedBuilding,
-	"SpiderWeb": SpiderWeb
+ 	# "Fly": Fly,
+	# "Serpent": Serpent,
+	# "CollapsedBuilding": CollapsedBuilding,
+	# "SpiderWeb": SpiderWeb
 }
 
 @export var camera_speed: float = 100.0;
@@ -28,11 +30,21 @@ var spawn_positions: Array[Vector2] = [];
 
 var collapsed_building_min_distance: float = 300.0
 
+
 func _get_viewport_size():
 	return get_viewport().size / $Camera2D.zoom.x;
 
 func _ready() -> void:
 	Instance = self;
+
+var camera_active: bool = true
+
+var event_timer: Timer = null
+var event_duration_timer: Timer = null
+
+func _ready() -> void:
+	rain.stop_rain()
+	
 	for enemy_type in enemy_types.keys():
 		var timer: Timer = Timer.new();
 		timer.name = "Timer_" + enemy_type;
@@ -40,14 +52,32 @@ func _ready() -> void:
 		timer.connect("timeout", _spawn_enemy.bind(enemy_type));
 		add_child(timer);
 		_set_random_spawn_timer(timer, spawn_data[enemy_type]);
+		
+	event_timer = Timer.new();
+	event_timer.name = "Event Timer";
+	event_timer.one_shot = true;
+	event_timer.connect("timeout", _on_random_event_triggered);
+	add_child(event_timer);
+	_set_random_timer(event_timer, random_event_interval)
+	
+	event_duration_timer = Timer.new()
+	event_duration_timer.name = "EventDurationTimer"
+	event_duration_timer.one_shot = true
+	event_duration_timer.connect("timeout", _on_event_finished)
+	add_child(event_duration_timer)
+	
+	await get_tree().create_timer(1.0).timeout;
+	$AudioPlayer.play()
 
 func _process(delta: float) -> void:
-	if player:
+	if camera_active and player:
 		# Camera mid point
 		var camera_mid_x = camera.global_position.x;
 		
 		if player.global_position.x > camera_mid_x:
 			camera.global_position.x += camera_speed * delta;
+			rain.global_position.x = camera.global_position.x;
+			boundaries.global_position.x = camera.global_position.x;
 			
 func _spawn_enemy(enemy_type: String) -> void:
 	var num_enemies := randi_range(spawn_data[enemy_type].am_min, spawn_data[enemy_type].am_max);
@@ -86,3 +116,22 @@ func _set_random_spawn_timer(timer: Timer, interval: Dictionary) -> void:
 	
 func _exit_tree() -> void:
 	Instance = null;
+
+
+func _on_random_event_triggered() -> void:
+	camera_active = false;
+	rain.start_rain()
+	print("Rain starts!")
+	_set_random_timer(event_duration_timer, random_event_duration)
+	
+func _on_event_finished() ->  void:
+	rain.stop_rain()
+	camera_active = true
+	print("Rain finish!")
+	_set_random_timer(event_timer, random_event_interval)
+	
+func _set_random_timer(timer: Timer, interval: Dictionary) -> void:
+	var min_time = interval.get("min", 1.0)
+	var max_time = interval.get("max", 2.0)
+	timer.wait_time = randf_range(min_time, max_time)
+	timer.start()

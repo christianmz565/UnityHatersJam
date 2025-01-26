@@ -1,26 +1,54 @@
-[gd_scene load_steps=6 format=3 uid="uid://p1cqo3xwr0u0"]
+[gd_scene load_steps=11 format=3 uid="uid://p1cqo3xwr0u0"]
 
 [ext_resource type="Script" path="res://Scenes/Spawnables/collapsed_building.gd" id="1_65b4r"]
-[ext_resource type="Texture2D" uid="uid://du0iy5muuwtcn" path="res://Resources/cricro_atlas.png" id="2_8yfe0"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o5kkq"]
-atlas = ExtResource("2_8yfe0")
-region = Rect2(48, 0, 32, 32)
+[ext_resource type="Texture2D" uid="uid://cjg81vr43kkm0" path="res://Assets/Spawneables/rock.png" id="2_hgjtd"]
+[ext_resource type="AudioStream" uid="uid://nrbpnnuyyexq" path="res://Assets/SoundsGame/background/collapsedBuildings/building.wav" id="3_lx8r4"]
+[ext_resource type="Script" path="res://CustomTypes/AudioPlayer.gd" id="4_c3j3m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hejee"]
 size = Vector2(142.8, 667.333)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ocdlh"]
-radius = 38.0132
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mmged"]
+size = Vector2(56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ady3h"]
+atlas = ExtResource("2_hgjtd")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8b2j"]
+atlas = ExtResource("2_hgjtd")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3pmy6"]
+atlas = ExtResource("2_hgjtd")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_252im"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ady3h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8b2j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3pmy6")
+}],
+"loop": false,
+"name": &"falling",
+"speed": 5.0
+}]
 
 [node name="CollapsedBuilding" type="Node2D"]
 scale = Vector2(5, 5)
 script = ExtResource("1_65b4r")
 speed = 750.0
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(3, 3)
-texture = SubResource("AtlasTexture_o5kkq")
 
 [node name="DetectArea" type="Area2D" parent="."]
 
@@ -31,11 +59,24 @@ shape = SubResource("RectangleShape2D_hejee")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_ocdlh")
+shape = SubResource("RectangleShape2D_mmged")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(0, -4)
 scale = Vector2(4.4, 4.2)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3.5, 3.5)
+sprite_frames = SubResource("SpriteFrames_252im")
+animation = &"falling"
+autoplay = "default"
+frame = 1
+frame_progress = 1.0
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_lx8r4")
+script = ExtResource("4_c3j3m")
+type = 1
 
 [connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

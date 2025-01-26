@@ -41,6 +41,7 @@ func _ready() -> void:
 	$WarningSprite.scale.y = window_height * 1.3;
 
 	prepare_attack();
+	$AudioPlayer.play()
 	_post_spawn();
 
 func prepare_attack():

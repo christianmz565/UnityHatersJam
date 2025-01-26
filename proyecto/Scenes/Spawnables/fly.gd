@@ -41,6 +41,7 @@ func _physics_process(delta: float) -> void:
 
 func _ready() -> void:
 	global_position = initial_pos;
+	$AudioPlayer.play()
 	_post_spawn();
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
