@@ -41,9 +41,20 @@ var camera_active: bool = true
 var event_timer: Timer = null
 var event_duration_timer: Timer = null
 
+const ENTRY_DIALOGUE := [
+  ["Narrator", "In the aftermath of World War III, humanity fled underground to escape the acidic rains. Resources below? Scarce.", 2],
+  ["Narrator", "Desperation birthed innovation: fragile ammonia hydroxide bubbles — our shield against the corrosive skies.", 2],
+  ["Narrator", "But outside lies danger. Mutated creatures roam the wasteland.", 2],
+  ["Commander", "Guide the research ship and capture data on these creatures.", 2],
+  ["Commander", "One hit, and it's over. Stay sharp.", 2]
+]
+
 func _ready() -> void:
 	Instance = self;
+	DialogueBox.send_dialogues(ENTRY_DIALOGUE);
 	rain.stop_rain()
+	
+	await get_tree().create_timer(15).timeout;
 	
 	for enemy_type in enemy_types.keys():
 		var timer: Timer = Timer.new();
@@ -65,9 +76,6 @@ func _ready() -> void:
 	event_duration_timer.one_shot = true
 	event_duration_timer.connect("timeout", _on_event_finished)
 	add_child(event_duration_timer)
-	
-	await get_tree().create_timer(1.0).timeout;
-	$AudioPlayer.play()
 
 func _process(delta: float) -> void:
 	if camera_active and player:

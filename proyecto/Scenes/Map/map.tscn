@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dg5r6rjih28h0" path="res://Assets/Map/houses1.png" id="7_b8dj8"]
 [ext_resource type="Texture2D" uid="uid://crgnt2v6ln4lb" path="res://Assets/Map/road.png" id="8_ri6dk"]
 [ext_resource type="PackedScene" uid="uid://da8a3svnft1d3" path="res://Scenes/Particles/RainParticles.tscn" id="9_48hr4"]
+[ext_resource type="AudioStream" uid="uid://c1rrj25hxgqln" path="res://Assets/SoundsGame/background/backgroundMusic.mp3" id="10_x80ih"]
 [ext_resource type="Script" path="res://CustomTypes/AudioPlayer.gd" id="11_ibm1h"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_aeq6d"]
@@ -23,8 +24,6 @@ b = Vector2(816, -608)
 a = Vector2(-808, 608)
 b = Vector2(808, 608)
 
-[sub_resource type="AudioStreamMP3" id="AudioStreamMP3_ubg65"]
-
 [node name="Map" type="Node2D"]
 script = ExtResource("1_xur85")
 camera_speed = 300.0
@@ -35,6 +34,16 @@ zoom = Vector2(0.63, 0.63)
 [node name="Player" parent="." instance=ExtResource("2_mwg05")]
 z_index = 1
 position = Vector2(-592, 8)
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="Player"]
+position = Vector2(372, 0)
+scale = Vector2(0.5, 0.5)
+stream = ExtResource("10_x80ih")
+autoplay = true
+script = ExtResource("11_ibm1h")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="Player"]
+current = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -98,6 +107,7 @@ texture = ExtResource("8_ri6dk")
 visible = false
 position = Vector2(0, -536)
 scale = Vector2(2, 2)
+texture = null
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -113,5 +123,4 @@ shape = SubResource("SegmentShape2D_nhwwd")
 
 [node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
 visible = false
-stream = SubResource("AudioStreamMP3_ubg65")
 script = ExtResource("11_ibm1h")
