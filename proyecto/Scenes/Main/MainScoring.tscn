@@ -1,9 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://dn23nhvdodm4p"]
+[gd_scene load_steps=15 format=3 uid="uid://dn23nhvdodm4p"]
 
 [ext_resource type="Script" path="res://Scenes/Main/main_scoring.gd" id="1_j2mte"]
 [ext_resource type="FontFile" uid="uid://iccaj5rujfxs" path="res://fonts/pixel_font.ttf" id="1_msw5i"]
 [ext_resource type="Texture2D" uid="uid://d38gcr5aqhn3h" path="res://Resources/Particles/star.png" id="3_tvtwo"]
 [ext_resource type="Texture2D" uid="uid://bdl3a853yqx87" path="res://Resources/Particles/buble.png" id="4_0r5ua"]
+[ext_resource type="Script" path="res://CustomTypes/AudioPlayer.gd" id="5_fl2yg"]
+[ext_resource type="AudioStream" uid="uid://gwbm3tbnk46" path="res://Resources/SFX/score.mp3" id="5_qyd3t"]
+[ext_resource type="AudioStream" uid="uid://bhvbioxw72aud" path="res://Resources/Music/Ending.mp3" id="7_fot02"]
 
 [sub_resource type="Curve" id="Curve_opnr7"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.970852, 0), 0.0, 0.0, 0, 0]
@@ -36,9 +39,28 @@ particle_flag_disable_z = true
 emission_shape_scale = Vector3(700, 400, 1)
 emission_shape = 3
 emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 79.37
+initial_velocity_max = 214.29
 gravity = Vector3(0, -100, 0)
+linear_accel_min = -15.87
+linear_accel_max = -15.87
 color = Color(0.669315, 0.669315, 0.669315, 1)
-turbulence_enabled = true
+
+[sub_resource type="Animation" id="Animation_1law5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_3net2"]
 resource_name = "blink"
@@ -55,21 +77,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
-}
-
-[sub_resource type="Animation" id="Animation_1law5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8yfam"]
@@ -121,7 +128,7 @@ layout_mode = 2
 theme_override_constants/line_spacing = -25
 theme_override_fonts/font = ExtResource("1_msw5i")
 theme_override_font_sizes/font_size = 90
-text = "NUEVO RECORD"
+text = "NEW RECORD"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="MainScoring/Shakeable/VBoxContainer"]
@@ -129,8 +136,8 @@ layout_mode = 2
 theme_override_constants/line_spacing = -25
 theme_override_fonts/font = ExtResource("1_msw5i")
 theme_override_font_sizes/font_size = 80
-text = "Información
-Recolectada"
+text = "Collected
+Information"
 horizontal_alignment = 1
 
 [node name="ScoreLabel" type="Label" parent="MainScoring/Shakeable/VBoxContainer"]
@@ -141,7 +148,25 @@ text = "0000000
 "
 horizontal_alignment = 1
 
+[node name="Label" type="Label" parent="MainScoring"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -170.5
+offset_top = -48.0
+offset_right = 170.5
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_msw5i")
+theme_override_font_sizes/font_size = 24
+text = "click anywhere to go back to the main menu"
+
 [node name="Fireworks" type="GPUParticles2D" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0.509804)
 position = Vector2(590, 655)
 amount = 60
@@ -151,7 +176,7 @@ lifetime = 4.0
 preprocess = 4.0
 
 [node name="Bubbles" type="GPUParticles2D" parent="."]
-position = Vector2(589, 353)
+position = Vector2(597, 606)
 amount = 150
 process_material = SubResource("ParticleProcessMaterial_dd0r6")
 texture = ExtResource("4_0r5ua")
@@ -164,3 +189,13 @@ root_node = NodePath("../MainScoring/Shakeable/VBoxContainer")
 libraries = {
 "": SubResource("AnimationLibrary_8yfam")
 }
+
+[node name="SFXScore" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_qyd3t")
+autoplay = true
+script = ExtResource("5_fl2yg")
+type = 1
+
+[node name="MusicScore" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_fot02")
+script = ExtResource("5_fl2yg")

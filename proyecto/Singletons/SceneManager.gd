@@ -5,6 +5,7 @@ var transition_rect: ColorRect;
 var gameScenes = {
 	"main_menu": preload("res://Scenes/Main/MainMenu.tscn"),
 	"main_game": preload("res://Scenes/Main/MainGame.tscn"),
+	"main_scoring": preload("res://Scenes/Main/MainScoring.tscn"),
 };
 
 func _setup():
@@ -15,6 +16,6 @@ func change_scene(to: String):
 	
 func _deferred_change_scene(to: String):
 	if (currentScene):
-		currentScene.queue_free();
+		currentScene.free();
 	currentScene = gameScenes[to].instantiate();
 	get_tree().root.add_child(currentScene);
