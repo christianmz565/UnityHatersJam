@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var sender_label: Label = $ColorRect/VBoxContainer/Sender

@@ -17,6 +17,7 @@ func _ready() -> void:
 		new_record_label.visible = true;
 	else:
 		new_record_label.visible = false;
+	Globals.best_score = Globals.current_score;
 
 func _process(delta: float) -> void:
 	_progress_anim(delta);
