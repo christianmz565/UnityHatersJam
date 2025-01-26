@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dn23nhvdodm4p"]
+[gd_scene load_steps=15 format=3 uid="uid://bw2a6yythbdg1"]
 
 [ext_resource type="Script" path="res://Scenes/Main/main_scoring.gd" id="1_j2mte"]
 [ext_resource type="FontFile" uid="uid://iccaj5rujfxs" path="res://fonts/pixel_font.ttf" id="1_msw5i"]
@@ -46,6 +46,7 @@ gravity = Vector3(0, -100, 0)
 linear_accel_min = -15.87
 linear_accel_max = -15.87
 color = Color(0.669315, 0.669315, 0.669315, 1)
+turbulence_enabled = true
 
 [sub_resource type="Animation" id="Animation_1law5"]
 length = 0.001

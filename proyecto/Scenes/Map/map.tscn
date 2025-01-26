@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c82e3a3mqgkqo"]
+[gd_scene load_steps=15 format=3 uid="uid://c82e3a3mqgkqo"]
 
 [ext_resource type="Script" path="res://Scenes/Map/map.gd" id="1_xur85"]
 [ext_resource type="PackedScene" uid="uid://dafh5lcpxil72" path="res://Scenes/Character/player.tscn" id="2_mwg05"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dg5r6rjih28h0" path="res://Assets/Map/houses1.png" id="7_b8dj8"]
 [ext_resource type="Texture2D" uid="uid://crgnt2v6ln4lb" path="res://Assets/Map/road.png" id="8_ri6dk"]
 [ext_resource type="PackedScene" uid="uid://da8a3svnft1d3" path="res://Scenes/Particles/RainParticles.tscn" id="9_48hr4"]
+[ext_resource type="Script" path="res://CustomTypes/AudioPlayer.gd" id="11_ibm1h"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_aeq6d"]
 a = Vector2(0, 544)
@@ -21,6 +22,8 @@ b = Vector2(960, -544)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_nhwwd"]
 a = Vector2(-960, 544)
 b = Vector2(960, 544)
+
+[sub_resource type="AudioStreamMP3" id="AudioStreamMP3_ubg65"]
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_xur85")
@@ -104,3 +107,7 @@ shape = SubResource("SegmentShape2D_i3b8e")
 
 [node name="BottomBoundary" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("SegmentShape2D_nhwwd")
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamMP3_ubg65")
+script = ExtResource("11_ibm1h")
