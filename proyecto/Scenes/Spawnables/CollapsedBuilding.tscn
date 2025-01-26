@@ -8,15 +8,15 @@ atlas = ExtResource("2_8yfe0")
 region = Rect2(48, 0, 32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hejee"]
-size = Vector2(149.333, 667.333)
+size = Vector2(142.8, 667.333)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ocdlh"]
 radius = 38.0132
 
 [node name="CollapsedBuilding" type="Node2D"]
-scale = Vector2(2, 2)
+scale = Vector2(5, 5)
 script = ExtResource("1_65b4r")
-speed = 300.0
+speed = 750.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(3, 3)
@@ -26,6 +26,7 @@ texture = SubResource("AtlasTexture_o5kkq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea"]
 position = Vector2(-2, 298)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_hejee")
 
 [node name="Area2D" type="Area2D" parent="."]

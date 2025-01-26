@@ -15,17 +15,21 @@ static func _spawn(pos: Vector2):
 	var instance = pre.instantiate() as Serpent;
 	instance.initial_pos = pos;
 	return instance;
+	
+static func get_spawn_pos():
+	var viewport_size = Map.Instance._get_viewport_size();
+	var view_y_half = viewport_size.y / 2;
+	var n_x = randi_range(-view_y_half, view_y_half);
+	var n_y = ((viewport_size.y / 2) + OFFSET) * Globals.get_rand_pos_neg();
+	return Vector2(n_x, n_y);
 
 func _physics_process(delta: float) -> void:
 	if attacking:
 		position += velocity * delta;
 
 func _ready() -> void:
-	var down = randi_range(0, 1) == 0;
-	var window_height = get_viewport_rect().size.y;
-	var y_pos = window_height / 2 * (1 if down else -1);
-	var valid_pos = Vector2(initial_pos.x, y_pos);
-	position = valid_pos;
+	var window_height = Map.Instance._get_viewport_size().y;
+	global_position = initial_pos;
 
 	var angle = global_position.angle_to_point(Player.Instance.global_position) + randf_range(-PI / 8, PI / 8);
 	var valid_angle = angle - PI / 2;

@@ -15,8 +15,24 @@ static func _spawn(pos: Vector2):
 	instance.initial_pos = pos;
 	return instance;
 
+static func get_spawn_pos():
+	var viewport_size = Map.Instance._get_viewport_size();
+	var n_x: float;
+	var n_y: float;
+	if (randf() >= 0.5):
+		var view_y_half = viewport_size.y / 2;
+		n_x = ((viewport_size.x / 2) + OFFSET) * Globals.get_rand_pos_neg();
+		n_y = randi_range(-view_y_half, view_y_half);
+	else:
+		var view_x_half = viewport_size.x / 2;
+		n_x = randi_range(-view_x_half, view_x_half);
+		n_y = ((viewport_size.y / 2) + OFFSET) * Globals.get_rand_pos_neg();
+		
+	return Vector2(n_x, n_y);
+
 func _process(_delta: float) -> void:
 	$Sprite.flip_h = global_position.x < Player.Instance.global_position.x;
+	
 
 func _physics_process(delta: float) -> void:
 	dir = global_position.direction_to(Player.Instance.global_position);
@@ -24,7 +40,7 @@ func _physics_process(delta: float) -> void:
 	position += velocity * delta;
 
 func _ready() -> void:
-	position = initial_pos;
+	global_position = initial_pos;
 	_post_spawn();
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:

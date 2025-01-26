@@ -11,7 +11,7 @@ region = Rect2(16, 0, 32, 32)
 radius = 30.0167
 
 [node name="SpiderWeb" type="Node2D"]
-scale = Vector2(3, 3)
+scale = Vector2(4, 4)
 script = ExtResource("1_ivqn8")
 speed = 20.0
 

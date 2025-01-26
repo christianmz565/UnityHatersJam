@@ -6,14 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://djxjdn0otlb15" path="res://Resources/Spawnables/serpent_tail.png" id="6_pt7hc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o6q36"]
-size = Vector2(11, 81)
+size = Vector2(15.625, 96.25)
 
 [sub_resource type="QuadMesh" id="QuadMesh_ibcfs"]
 
 [node name="Serpent" type="Node2D"]
-scale = Vector2(3, 3)
+scale = Vector2(8, 8)
 script = ExtResource("1_3os22")
-speed = 1500.0
+speed = 3000.0
 attack_time = 2.0
 
 [node name="AttackTimer" type="Timer" parent="."]
@@ -22,7 +22,7 @@ one_shot = true
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 1)
+position = Vector2(-0.875, -25)
 shape = SubResource("RectangleShape2D_o6q36")
 
 [node name="WarningSprite" type="MeshInstance2D" parent="."]
