@@ -24,6 +24,5 @@ static func get_spawn_pos():
 
 func _on_area_entered(area: Area2D):
 	if area is Bullet:
-		print("hit")
 		take_damage(area.damage);
 		area.queue_free();

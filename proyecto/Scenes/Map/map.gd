@@ -7,15 +7,18 @@ class_name Map
 @onready var boundaries: StaticBody2D = $StaticBody2D
 
 @export var enemy_types: Dictionary = {
- 	# "Fly": Fly,
-	# "Serpent": Serpent,
-	# "CollapsedBuilding": CollapsedBuilding,
-	# "SpiderWeb": SpiderWeb
+ 	"Fly": Fly,
+	"Serpent": Serpent,
+	"CollapsedBuilding": CollapsedBuilding,
+	"SpiderWeb": SpiderWeb
 }
 
 @export var camera_speed: float = 100.0;
 @export var max_enemies_per_spawn: int = 4;
 @export var spawn_distance: float = 500.0;
+
+@export var random_event_interval: Dictionary = {"min": 50.0, "max": 60.0}
+@export var random_event_duration: Dictionary = {"min": 9.0, "max": 12.0}
 
 var spawn_data = {
 	"SpiderWeb": {"min": 10.0, "max": 12.0, "am_min": 2, "am_max": 3},
@@ -30,12 +33,8 @@ var spawn_positions: Array[Vector2] = [];
 
 var collapsed_building_min_distance: float = 300.0
 
-
 func _get_viewport_size():
 	return get_viewport().size / $Camera2D.zoom.x;
-
-func _ready() -> void:
-	Instance = self;
 
 var camera_active: bool = true
 
@@ -43,6 +42,7 @@ var event_timer: Timer = null
 var event_duration_timer: Timer = null
 
 func _ready() -> void:
+	Instance = self;
 	rain.stop_rain()
 	
 	for enemy_type in enemy_types.keys():

@@ -3,7 +3,7 @@ extends Node
 var music_pct := 50.0
 var sfx_pct := 50.0
 var best_score := 0
-var current_score := 236512
+var current_score := 0
 
 signal music_pct_changed
 signal sfx_pct_changed
