@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cuexp1jksyykc"]
+[gd_scene load_steps=9 format=3 uid="uid://cuexp1jksyykc"]
 
 [ext_resource type="Script" path="res://Scenes/Spawnables/serpent.gd" id="1_3os22"]
 [ext_resource type="Texture2D" uid="uid://ds18tgpk0oupf" path="res://Resources/Spawnables/serpent_head.png" id="4_ydve7"]
 [ext_resource type="Texture2D" uid="uid://crm7ug6p6vfrw" path="res://Resources/Spawnables/serpent_body.png" id="5_8oa80"]
+[ext_resource type="AudioStream" uid="uid://dbfv06x5nimow" path="res://Assets/SoundsGame/creatures/serpent/snake-rattle-sound-hq.wav" id="5_v1xee"]
+[ext_resource type="Script" path="res://CustomTypes/AudioPlayer.gd" id="6_fvabt"]
 [ext_resource type="Texture2D" uid="uid://djxjdn0otlb15" path="res://Resources/Spawnables/serpent_tail.png" id="6_pt7hc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o6q36"]
@@ -56,6 +58,11 @@ region_rect = Rect2(32, 0, 16, 16)
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(9.53674e-07, -20)
 scale = Vector2(1.86667, 6.26667)
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_v1xee")
+script = ExtResource("6_fvabt")
+type = 1
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

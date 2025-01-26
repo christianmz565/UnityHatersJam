@@ -19,6 +19,7 @@ func _ready() -> void:
 	var valid_dir = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized();
 	dir = valid_dir;
 	velocity = valid_dir * speed;
+	$AudioPlayer.play()
 	_post_spawn();
 
 func _physics_process(delta: float) -> void:

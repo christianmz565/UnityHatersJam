@@ -60,6 +60,8 @@ func _ready() -> void:
 	event_duration_timer.connect("timeout", _on_event_finished)
 	add_child(event_duration_timer)
 	
+	await get_tree().create_timer(1.0).timeout;
+	$AudioPlayer.play()
 
 func _process(delta: float) -> void:
 	if camera_active and player:

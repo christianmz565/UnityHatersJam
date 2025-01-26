@@ -8,6 +8,9 @@ var velocity: Vector2;
 var dir: Vector2;
 var falling := false;
 
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var audio: AudioPlayer = $AudioPlayer
+
 # collapsed building only takes the x position, the y position is the ceiling
 static func _spawn(pos: Vector2):
 	var instance = pre.instantiate() as CollapsedBuilding;
@@ -29,11 +32,14 @@ func _ready() -> void:
 	dir = valid_dir;
 	velocity = valid_dir * speed;
 
+	audio.play()
 	_post_spawn();
 
 func _on_detect_area_body_entered(body: Node2D) -> void:
 	if (body is Player):
 		falling = true;
+		sprite.play("falling");
+		audio.play()
 		
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
