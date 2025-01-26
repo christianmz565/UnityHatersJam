@@ -51,9 +51,9 @@ animations = [{
 }]
 
 [node name="Fly" type="Node2D"]
-scale = Vector2(3, 3)
+scale = Vector2(8, 8)
 script = ExtResource("1_byg7t")
-speed = 80.0
+speed = 120.0
 
 [node name="Area2D" type="Area2D" parent="."]
 

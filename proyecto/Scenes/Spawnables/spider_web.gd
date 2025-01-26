@@ -13,9 +13,16 @@ static func _spawn(pos: Vector2):
 	var instance = pre.instantiate() as SpiderWeb;
 	instance.initial_pos = pos;
 	return instance;
+	
+static func get_spawn_pos():
+	var viewport_size = Map.Instance._get_viewport_size();
+	var view_y_half = viewport_size.y / 2;
+	var n_x = viewport_size.x / 2 + viewport_size.x / 2 + randi_range(OFFSET, viewport_size.x);
+	var n_y = randi_range(-view_y_half, view_y_half);
+	return Vector2(n_x, n_y);
 
 func _ready() -> void:
-	position = initial_pos;
+	global_position = initial_pos;
 	var valid_dir = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized();
 	dir = valid_dir;
 	velocity = valid_dir * speed;

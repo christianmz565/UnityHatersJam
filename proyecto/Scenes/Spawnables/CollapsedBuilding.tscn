@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://CustomTypes/AudioPlayer.gd" id="4_c3j3m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hejee"]
-size = Vector2(149.333, 667.333)
+size = Vector2(142.8, 667.333)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mmged"]
 size = Vector2(56, 56)
@@ -46,9 +46,9 @@ animations = [{
 }]
 
 [node name="CollapsedBuilding" type="Node2D"]
-scale = Vector2(2, 2)
+scale = Vector2(5, 5)
 script = ExtResource("1_65b4r")
-speed = 300.0
+speed = 750.0
 
 [node name="DetectArea" type="Area2D" parent="."]
 

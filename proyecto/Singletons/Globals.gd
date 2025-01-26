@@ -15,3 +15,6 @@ func set_volume_pct(value: float) -> void:
 func set_sfx_pct(value: float) -> void:
 	sfx_pct = value
 	emit_signal("sfx_pct_changed", sfx_pct)
+
+func get_rand_pos_neg():
+	return (-1 if randf() >= 0.5 else 1);

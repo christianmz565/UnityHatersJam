@@ -17,16 +17,19 @@ static func _spawn(pos: Vector2):
 	instance.initial_pos = pos;
 	return instance;
 
+static func get_spawn_pos():
+	var viewport_size = Map.Instance._get_viewport_size();
+	var n_x = viewport_size.x / 2 + OFFSET;
+	var n_y = -(viewport_size.y / 2);
+	return Vector2(n_x, n_y);
+
 func _physics_process(delta: float) -> void:
 	if falling:
 		position += velocity * delta;
 	
 
 func _ready() -> void:
-	var window_height = get_viewport_rect().size.y;
-	var y_pos = -window_height / 2;
-	var valid_pos = Vector2(initial_pos.x, y_pos);
-	position = valid_pos;
+	global_position = initial_pos;
 
 	var valid_dir = Vector2.DOWN;
 	dir = valid_dir;
