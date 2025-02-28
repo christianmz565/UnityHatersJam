@@ -262,7 +262,7 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_fy4xn")
 theme_override_font_sizes/font_size = 16
-text = "cmestasz"
+text = "christianmz565"
 horizontal_alignment = 1
 
 [node name="Label12" type="Label" parent="Credits/ScrollContainer/CenterContainer/VBoxContainer"]
